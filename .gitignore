@@ -5,6 +5,4 @@
 *.log
 .vercel
 .env*.local
-
-.vercel
 fetch.log
