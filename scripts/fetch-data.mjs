@@ -13,9 +13,18 @@ const OSM_VALUE = "camp_site";
 
 const ENDPOINTS = [
   "https://overpass-api.de/api/interpreter",
+  "https://overpass.osm.ch/api/interpreter",
   "https://overpass.kumi.systems/api/interpreter",
-  "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+  "https://overpass.private.coffee/api/interpreter",
 ];
+
+// overpass-api.de returns HTTP 406 to clients with no User-Agent (Node fetch
+// sends none by default), so a UA header is mandatory.
+const HEADERS = {
+  "Content-Type": "application/x-www-form-urlencoded",
+  "User-Agent": "worldmap-osm-map/1.0 (zumxet@gmail.com)",
+  Accept: "application/json",
+};
 
 const TILE = 30; // degrees
 const LAT_MIN = -60,
@@ -41,7 +50,7 @@ async function fetchTile(s, w, n, e) {
     try {
       const res = await fetch(endpoint, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        headers: HEADERS,
         body,
       });
       if (res.status === 429 || res.status === 504 || res.status === 502) {
