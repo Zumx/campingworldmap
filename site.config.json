@@ -1,0 +1,40 @@
+{
+  "name": "Camping World Map",
+  "slug": "campingworldmap",
+  "emoji": "🏕️",
+  "domain": "campingworldmap.vercel.app",
+  "colors": {
+    "primary": "#2e7d32",
+    "accent": "#a5d6a7"
+  },
+  "osm": {
+    "key": "tourism",
+    "value": "camp_site"
+  },
+  "osmFilters": [
+    {
+      "key": "tourism",
+      "value": "camp_site"
+    }
+  ],
+  "includeRelations": false,
+  "dedupeMeters": 0,
+  "mappedNoun": "campsites",
+  "unnamedLabel": "Unnamed campsite",
+  "affiliateUrl": "https://www.getyourguide.com/s/?q={q}",
+  "metaFields": [],
+  "aboutText": null,
+  "locales": [
+    "en"
+  ],
+  "defaultLocale": "en",
+  "namedOnly": false,
+  "includeFilter": null,
+  "dataSource": {
+    "type": "overpass"
+  },
+  "googlePlaces": {
+    "enabled": false,
+    "cap": 800
+  }
+}
